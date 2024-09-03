@@ -74,7 +74,7 @@ public class VillaAPIController : ControllerBase
         };
         _db.Villas.Add(model);
         _db.SaveChanges();
-        return CreatedAtRoute("GetVilla", new { id = model.Id }, villaDTO);
+        return CreatedAtRoute("GetVilla", new { id = model.Id }, model);
     }
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
