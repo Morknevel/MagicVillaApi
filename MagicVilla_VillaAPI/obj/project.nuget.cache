@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZvbR6o01Y3uE8ZSaLbyJR4MWOYnGxy1yA+rfZKG2hwxSBMb1bGesnvEL2zygf9zvnWY73u31dYAj8fG29rL1hA==",
+  "dgSpecHash": "iFIoCkMs/HGZWlhdyjQcHRtz9cxrTk78bDkJMylSYICTPECRXUw51qFRuUSc75Tmy6ovYdNHTuwLntJdUPc/lA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\99555\\RiderProjects\\MagicVillaApi\\MagicVilla\\MagicVilla.csproj",
+  "projectFilePath": "C:\\Users\\99555\\RiderProjects\\MagicVillaApi\\MagicVilla_VillaAPI\\MagicVilla_VillaAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\99555\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\99555\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",

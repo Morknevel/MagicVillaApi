@@ -4,7 +4,6 @@ using MagicVilla.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -12,11 +11,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MagicVilla.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240906194338_AddForeignKeyToVillaTable")]
-    partial class AddForeignKeyToVillaTable
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,7 +22,7 @@ namespace MagicVilla.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("MagicVilla.Models.Villa", b =>
+            modelBuilder.Entity("MagicVilla_VillaAPI.Models.Villa", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -136,7 +133,7 @@ namespace MagicVilla.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MagicVilla.Models.VillaNumber", b =>
+            modelBuilder.Entity("MagicVilla_VillaAPI.Models.VillaNumber", b =>
                 {
                     b.Property<int>("VillaNo")
                         .HasColumnType("int");
@@ -161,9 +158,9 @@ namespace MagicVilla.Migrations
                     b.ToTable("VillaNumbers");
                 });
 
-            modelBuilder.Entity("MagicVilla.Models.VillaNumber", b =>
+            modelBuilder.Entity("MagicVilla_VillaAPI.Models.VillaNumber", b =>
                 {
-                    b.HasOne("MagicVilla.Models.Villa", "Villa")
+                    b.HasOne("MagicVilla_VillaAPI.Models.Villa", "Villa")
                         .WithMany()
                         .HasForeignKey("VillaID")
                         .OnDelete(DeleteBehavior.Cascade)

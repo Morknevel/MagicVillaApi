@@ -5332,11 +5332,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\99555\\RiderProjects\\MagicVillaApi\\MagicVilla\\MagicVilla.csproj",
-      "projectName": "MagicVilla",
-      "projectPath": "C:\\Users\\99555\\RiderProjects\\MagicVillaApi\\MagicVilla\\MagicVilla.csproj",
+      "projectUniqueName": "C:\\Users\\99555\\RiderProjects\\MagicVillaApi\\MagicVilla_VillaAPI\\MagicVilla_VillaAPI.csproj",
+      "projectName": "MagicVilla_VillaAPI",
+      "projectPath": "C:\\Users\\99555\\RiderProjects\\MagicVillaApi\\MagicVilla_VillaAPI\\MagicVilla_VillaAPI.csproj",
       "packagesPath": "C:\\Users\\99555\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\99555\\RiderProjects\\MagicVillaApi\\MagicVilla\\obj\\",
+      "outputPath": "C:\\Users\\99555\\RiderProjects\\MagicVillaApi\\MagicVilla_VillaAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\99555\\AppData\\Roaming\\NuGet\\NuGet.Config",
