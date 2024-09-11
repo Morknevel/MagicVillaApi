@@ -50,7 +50,10 @@
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
       "MagicVilla_Utility/1.0.0": {
         "runtime": {
-          "MagicVilla_Utility.dll": {}
+          "MagicVilla_Utility.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
