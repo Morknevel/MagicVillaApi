@@ -80,8 +80,8 @@ public class VillaController : Controller
         }
         return View(model);
     }
-    public async Task<ActionResult> DeleteVilla(int villaId)
-    { 
+    public async Task<IActionResult> DeleteVilla(int villaId)
+    {
         var response = await _villaService.GetAsync<APIResponse>(villaId);
         if (response != null && response.IsSuccess)
         {
@@ -91,17 +91,15 @@ public class VillaController : Controller
         return NotFound();
     }
 
-    [HttpPut]
+    [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> DeleteVilla(VillaDTO model)
+    public async Task<IActionResult> DeleteVilla(VillaDTO model)
     {
-        if (ModelState.IsValid)
+
+        var response = await _villaService.DeleteAsync<APIResponse>(model.Id);
+        if (response != null && response.IsSuccess)
         {
-            var response = await _villaService.DeleteAsync<APIResponse>(model.Id);
-            if (response != null && response.IsSuccess)
-            {
-                return RedirectToAction(nameof(IndexVilla));
-            }
+            return RedirectToAction(nameof(IndexVilla));
         }
 
         return View(model);
