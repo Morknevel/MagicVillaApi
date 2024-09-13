@@ -34,24 +34,24 @@ public class VillaController : Controller
         }
         return View(list);
     }
-    public async Task<ActionResult> CreateVilla()
-    { 
+    public async Task<IActionResult> CreateVilla()
+    {
         return View();
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> CreateVilla(VillaCreateDTO model)
+    public async Task<IActionResult> CreateVilla(VillaCreateDTO model)
     {
         if (ModelState.IsValid)
         {
+
             var response = await _villaService.CreateAsync<APIResponse>(model);
             if (response != null && response.IsSuccess)
             {
                 return RedirectToAction(nameof(IndexVilla));
             }
         }
-
         return View(model);
     }
     public async Task<IActionResult> UpdateVilla(int villaId)
