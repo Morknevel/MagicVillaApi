@@ -14,7 +14,9 @@ builder.Services.AddScoped<IVillaService, VillaService>();
 
 builder.Services.AddHttpClient<IVillaNumberService, VillaNumberService>();
 builder.Services.AddScoped<IVillaNumberService, VillaNumberService>();
-
+builder.Logging.ClearProviders(); // Clear default logging providers (optional)
+builder.Logging.AddConsole(); // Add Console logging
+builder.Logging.AddDebug();   // Add Debug logging (for Visual Studio Output window)
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

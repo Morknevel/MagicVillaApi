@@ -86,28 +86,29 @@ public class VillaNumberController : Controller
             return View(model);
     }
     
-    public async Task<IActionResult> UpdateVillaNumber(int villaId)
-    {
-        VillaNumberUpdateVM villaNumberVM = new();
-        var response = await _villaService.GetAsync<APIResponse>(villaId);
-        if (response != null && response.IsSuccess)
+    public async Task<IActionResult> UpdateVillaNumber(int villaNo)
         {
-            VillaNumberDTO model = JsonConvert.DeserializeObject<VillaNumberDTO>(Convert.ToString(response.Result));
-            villaNumberVM.VillaNumber = _mapper.Map<VillaNumberUpdateDTO>(model);
-        } 
-        response = await _villaService.GetAllAsync<APIResponse>();
-        if (response != null && response.IsSuccess)
-        {
-            villaNumberVM.VillaList = JsonConvert.DeserializeObject<List<VillaDTO>>
-                (Convert.ToString(response.Result)).Select(i => new SelectListItem
+            VillaNumberUpdateVM villaNumberVM = new();
+            var response = await _villaNumberService.GetAsync<APIResponse>(villaNo);
+            if (response != null && response.IsSuccess)
             {
-                Text = i.Name,
-                Value = i.Id.ToString()
-            });
-            return View(villaNumberVM);
+                VillaNumberDTO model = JsonConvert.DeserializeObject<VillaNumberDTO>(Convert.ToString(response.Result));
+                villaNumberVM.VillaNumber =  _mapper.Map<VillaNumberUpdateDTO>(model);
+            }
+            
+            response = await _villaService.GetAllAsync<APIResponse>();
+            if (response != null && response.IsSuccess)
+            {
+                villaNumberVM.VillaList = JsonConvert.DeserializeObject<List<VillaDTO>>
+                    (Convert.ToString(response.Result)).Select(i => new SelectListItem
+                    {
+                        Text = i.Name,
+                        Value = i.Id.ToString()
+                    }); 
+                return View(villaNumberVM);
+            }
+            return NotFound();
         }
-        return NotFound();
-    }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
@@ -128,7 +129,6 @@ public class VillaNumberController : Controller
                 }
             }
         }
-
         var resp = await _villaService.GetAllAsync<APIResponse>();
         if (resp != null && resp.IsSuccess)
         {
@@ -141,15 +141,17 @@ public class VillaNumberController : Controller
         }
         return View(model);
     }
-    public async Task<IActionResult> DeleteVillaNumber(int villaId)
+
+    public async Task<IActionResult> DeleteVillaNumber(int villaNo)
     {
-        VillaNumberUpdateVM villaNumberVM = new();
-        var response = await _villaService.GetAsync<APIResponse>(villaId);
+        VillaNumberDeleteVM villaNumberVM = new();
+        var response = await _villaNumberService.GetAsync<APIResponse>(villaNo);
         if (response != null && response.IsSuccess)
         {
             VillaNumberDTO model = JsonConvert.DeserializeObject<VillaNumberDTO>(Convert.ToString(response.Result));
-            villaNumberVM.VillaNumber = _mapper.Map<VillaNumberUpdateDTO>(model);
-        } 
+            villaNumberVM.VillaNumber = model;
+        }
+
         response = await _villaService.GetAllAsync<APIResponse>();
         if (response != null && response.IsSuccess)
         {
@@ -161,19 +163,21 @@ public class VillaNumberController : Controller
             });
             return View(villaNumberVM);
         }
+
+
+        return NotFound();
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteVillaNumber(VillaNumberDeleteVM model)
     {
-
         var response = await _villaNumberService.DeleteAsync<APIResponse>(model.VillaNumber.VillaNo);
         if (response != null && response.IsSuccess)
         {
-            return RedirectToAction(nameof(IndexVilla));
+            return RedirectToAction(nameof(IndexVillaNumber));
         }
-
+        
         return View(model);
     }
 }

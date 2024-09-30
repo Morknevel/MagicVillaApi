@@ -71,7 +71,6 @@ public class VillaController : Controller
     {
         if (ModelState.IsValid)
         {
-
             var response = await _villaService.UpdateAsync<APIResponse>(model);
             if (response != null && response.IsSuccess)
             {
